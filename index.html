@@ -1,0 +1,134 @@
+<!doctype html>
+<html x-data :class="($store.darkMode ? 'dark' : '' )" >
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&family=VT323&display=swap" rel="stylesheet">
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            content: ["./*.html"],
+            darkMode: "class",
+        };
+    </script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="dark:bg-slate-800 dark:text-white">
+<main x-data class="flex flex-col container mx-auto max-w-xl space-y-4 p-8">
+    <button x-data @click="$store.darkMode = ! $store.darkMode" class="btn">
+        <strong x-text="$store.darkMode ? 'Dark' : 'Light'"></strong>
+    </button>
+
+    <section>
+        <h1 class="text-xl font-bold">Cooper Weiser</h1>
+        <h3 class="text-lg font-semibold text-muted-foreground">Calabasas, CA</h3>
+    </section>
+    <section>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </section>
+    <section>
+        <h2 class="text-xl font-bold">Links</h2>
+        <ul class="list-disc space-y-1 pl-8">
+            <li class="underline"><a href="https://linkedin.com/in/cweiser">LinkedIn</a></li>
+            <li class="underline"><a href="https://github.com/cweiser22">Github</a></li>
+        </ul>
+    </section>
+    <section x-data="{ experience: [
+        { title: 'Bacon Unlimited', dateRange: 'Nov 2022 - Dec 2024' },
+        { title: 'Data Crunch Corp', dateRange: 'Dec 2021 - Jun 2022' },
+        { title: 'Freelance', dateRange: 'Feb 2020 - Jan 2022' },
+    ]}">
+        <h2 class="text-xl font-bold">Experience</h2>
+        <template x-for="e in experience" :key="e.title">
+            <div class="flex w-full justify-between items-center">
+                <h4 x-text="e.dateRange"></h4>
+
+                <h3 class="font-semibold text-left w-52" x-text="e.title"></h3>
+
+            </div>
+        </template>
+    </section>
+    <section x-data="recipes()" class="w-full">
+        <template x-for="r in recipes" :key="r.title">
+            <div x-data="{ open: null }" class="w-full space-y-2">
+                <!-- Accordion Item 1 -->
+                <div class="border rounded">
+                    <button
+                            @click="open === 1 ? open = null : open = 1"
+                            class="w-full flex justify-between items-center px-4 py-2 text-left"
+                    >
+                        <span x-text="r.title"></span>
+                        <svg :class="{ 'rotate-180': open === 1 }" class="w-4 h-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div x-show="open === 1" x-collapse class="px-4 py-2 ">
+                        <h3 class="text-lg font-semibold">Ingredients</h3>
+                        <ul class="list-disc space-y-1 pl-4">
+                            <template x-for="i in r.ingredients">
+                                <li>
+                                    <span x-text="i"></span>
+                                </li>
+                            </template>
+                        </ul>
+                        <h3 class="text-lg font-semibold">Steps</h3>
+                        <ol class="list-decimal space-y-1 p-2 list-inside">
+                            <template x-for="i in r.steps">
+                                <li>
+                                    <span x-text="i"></span>
+                                </li>
+                            </template>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </section>
+
+</main>
+<script>
+    function recipes(){
+        return {
+            recipes: [
+                {
+                    title: 'Incredibly Moist Brownies',
+                    ingredients: [
+                        "1/2 cup avocado oil (you can sub olive oil if desired)",
+                        "3/4 cup granulated sugar",
+                        "1/2 cup light brown sugar",
+                        "3 large eggs",
+                        "1/2 cup unsweetened cacao powder",
+                        "1/2 cup all-purpose flour (you can sub 1:1 gluten-free flour)",
+                        "2 teaspoons pure Madagascar vanilla extract"
+                    ],
+                    steps: [
+                        "Add granulated sugar, brown sugar, and avocado oil in a mixing bowl. Mix until combined.",
+                        "In a separate bowl, crack in the eggs and beat them for at least 30 seconds.",
+                        "Add beaten eggs and vanilla extract to mixing bowl and combine with other ingredients",
+                        "Add in the flour and cacao powder, and keep stirring just until all powders have combined. Avoid overmixing.",
+                        "Place batter in an 8x8 square baking dish, and place in oven for about 28 minutes.",
+                        "Let brownie cool and solidify. It should still be a bit jiggly when it comes out.",
+                    ]
+                }
+            ]
+        }
+    }
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('darkMode', false)
+    })
+</script>
+<style>
+    body{
+        font-family: "Source Code Pro", monospace;
+    }
+</style>
+
+</body>
+</html>
