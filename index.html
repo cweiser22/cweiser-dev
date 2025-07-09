@@ -1,6 +1,14 @@
 <!doctype html>
 <html x-data :class="($store.darkMode ? 'dark' : '' )" >
 <head>
+    <title>Cooper Weiser | Full-Stack Engineer</title>
+    <meta name="description" content="Personal page for Cooper Weiser, a full-stack engineer/software engineer
+based in Calabasas, CA who works with Python, Go, JavaScript, and TypeScript.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Cooper Weiser | Full-Stack Engineer">
+    <meta property="og:description" content="Personal page for Cooper Weiser, a full-stack engineer.">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4CZ160CZRR"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -28,7 +36,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="dark:bg-slate-900 dark:text-white">
+<body class="dark:bg-gray-900 dark:text-white">
 <main x-data class="flex flex-col container mx-auto max-w-xl space-y-4 p-8">
     <button x-data @click="$store.darkMode = ! $store.darkMode" class="btn">
         <strong x-text="$store.darkMode ? 'Dark' : 'Light'"></strong>
@@ -39,11 +47,23 @@
         <h3 class="text-lg font-semibold text-muted-foreground dark:text-cyan-500 text-cyan-600">Calabasas, CA</h3>
     </section>
     <section>
-        <p class="text-sm">Welcome to my personal site. This is a where I put anything cool that doesn't really fit on my LinkedIn.</p>
+        <p class="text-sm">Welcome to my personal site! This is a where I put any important information about myself,
+            my skills, or my interests that doesn't really fit in well on my LinkedIn or resume.</p>
+    </section>
+
+    <section class="space-y-2">
+        <h2 class="text-xl font-bold">About Me</h2>
+        <p class="text-sm">I grew up in Los Angeles, and have been interested in technology basically my entire life.
+            I first learned how to program when I was 13 years old, starting out with simple toy programs and
+            eventually gravitated towards web development. For the last few years, I've been working as a professional
+            software engineer, primarily at fast-paced startups. In my spare time, I enjoy cooking and baking, and
+        I'm working on gradually getting all my goto recipes up on this site. I currently live in Calabasas, just
+        outside Los Angeles.</p>
+        </p>
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-xl font-bold">My Technical Background</h2>
+        <h2 class="text-xl font-bold">My Technical Background In-Depth</h2>
         <p class="text-sm">
             I've worked with a wide variety of languages, libraries and frameworks over the past so many years. The
             lion's share of my past work experience has been in full-stack engineering, but I've also dabbled in
@@ -64,6 +84,33 @@
             and have been using FastAPI professionally since the framework first rose to prominence. I also use Golang's
             standard library extensively for backend projects, although I tend to add a few libraries I'm very fond of
             (particularly <code class="">github.com/jmoiron/sqlx</code> and <code>github.com/go-chi/chi</code>).
+        </p>
+
+        <p class="text-sm">
+            While I lean more to the backend, I still do a pretty substantial amount of frontend work. My strongest
+        frontend framework is by far React, and I almost always use TypeScript for React projects that aren't trivial.
+        Currently, my preferred frontend stack is React + ShadCN + TypeScript + TanStack Query + Tanstack Router + Zustand
+            (if global state is needed). I've also shipped code in other frameworks, including a visual data dashboard
+        application with Angular and SyncFusion, a real-time Google Docs-style editor in Vue.js with Quasar, and this website,
+        which uses Alpine.js.
+        </p>
+
+        <p class="text-sm">
+            In terms of databases, I'm generally biased in favor of relational databases, and have deep experience with
+            both MySQL and PostgreSQL. I usually choose PostgreSQL for new projects unless I have a compelling
+            reason not to, and opt for MongoDB for those edge cases where I legitimately need the flexibility
+            of a document store. Redis/Valkey is my preferred cache/KV store due to its simplicity, performance,
+            and built-in features for horizontal scaling, data streams, and geographic data. Furthermore, I've worked
+            on a few projects that involved embedded databases, specifically BoltDB and SQLite.
+        </p>
+
+        <p class="text-sm">
+            I'm moderately comfortable handling DevOps, and consider myself an expert on Docker. Nearly every application
+            I've deployed in the last few years has been containerized. I've written advanced CI/CD pipelines to handle
+            server deployments, desktop application builds, and package signing. I've been using Linux since I was
+            in high school, and went through the stereotypical distro-hopping phase in my sophomore year. I've written
+            and deployed systemd services on several production Linux servers (mostly targeting Ubuntu, Debian, and RHEL),
+            and have set up build pipelines to create .rpm and .deb packages.
         </p>
     </section>
     <section>
@@ -96,7 +143,7 @@
                 <div class="">
                     <button
                             @click="open === 1 ? open = null : open = 1"
-                            class="w-full flex justify-between items-center px-4 py-2 text-left"
+                            class="w-full flex justify-between items-center py-2 text-left"
                     >
                         <span x-text="r.title"></span>
                         <svg :class="{ 'rotate-180': open === 1 }" class="w-4 h-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -143,12 +190,14 @@
                         "2 teaspoons pure Madagascar vanilla extract"
                     ],
                     steps: [
+                        "Preheat oven to 350F.",
                         "Add granulated sugar, brown sugar, and avocado oil in a mixing bowl. Mix until combined.",
                         "In a separate bowl, crack in the eggs and beat them for at least 30 seconds.",
                         "Add beaten eggs and vanilla extract to mixing bowl and combine with other ingredients",
                         "Add in the flour and cacao powder, and keep stirring just until all powders have combined. Avoid overmixing.",
-                        "Place batter in an 8x8 square baking dish, and place in oven for about 28 minutes.",
+                        "Place batter in an 8x8 square baking dish, and bake in oven for about 28 minutes.",
                         "Let brownie cool and solidify. It should still be a bit jiggly when it comes out.",
+                        "Slice, serve and enjoy! I recommend heating the brownie individually before serving and topping with vanilla ice cream."
                     ]
                 }
             ]
