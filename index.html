@@ -1,6 +1,14 @@
 <!doctype html>
 <html x-data :class="($store.darkMode ? 'dark' : '' )" >
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4CZ160CZRR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-4CZ160CZRR');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -28,10 +36,35 @@
 
     <section>
         <h1 class="text-xl font-bold">Cooper Weiser</h1>
-        <h3 class="text-lg font-semibold text-muted-foreground text-pink-500">Calabasas, CA</h3>
+        <h3 class="text-lg font-semibold text-muted-foreground dark:text-cyan-500 text-cyan-600">Calabasas, CA</h3>
     </section>
     <section>
-        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="text-sm">Welcome to my personal site. This is a where I put anything cool that doesn't really fit on my LinkedIn.</p>
+    </section>
+
+    <section class="space-y-4">
+        <h2 class="text-xl font-bold">My Technical Background</h2>
+        <p class="text-sm">
+            I've worked with a wide variety of languages, libraries and frameworks over the past so many years. The
+            lion's share of my past work experience has been in full-stack engineering, but I've also dabbled in
+            mobile development, desktop app development, systems programming and blockchains.
+        </p>
+
+        <p class="text-sm">
+            Python, Go, and JS/TS are by far my most used programming languages, but I'm also skilled with a few other
+            languages. While I've yet to substantially adopt it for my personal projects, I'm extremely interested in the Elixir/Erlang/OTP
+            ecosystem, and have a lot of respect for functional programming (though it's not always the most practical
+            paradigm for web development). I'm also a big fan of Rust, and have been gradually adopting it as my primary
+            language for systems programming.
+        </p>
+
+        <p class="text-sm">
+            I've done a great deal of API development, and can confidently say that I know Django REST Framework
+            and FastAPI like the back of my hand. I have worked with nearly every major package in the Django ecosystem,
+            and have been using FastAPI professionally since the framework first rose to prominence. I also use Golang's
+            standard library extensively for backend projects, although I tend to add a few libraries I'm very fond of
+            (particularly <code class="">github.com/jmoiron/sqlx</code> and <code>github.com/go-chi/chi</code>).
+        </p>
     </section>
     <section>
         <h2 class="text-xl font-bold">Links</h2>
@@ -60,7 +93,7 @@
         <template x-for="r in recipes" :key="r.title">
             <div x-data="{ open: null }" class="w-full space-y-2">
                 <!-- Accordion Item 1 -->
-                <div class="border rounded">
+                <div class="">
                     <button
                             @click="open === 1 ? open = null : open = 1"
                             class="w-full flex justify-between items-center px-4 py-2 text-left"
