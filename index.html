@@ -20,7 +20,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="dark:bg-slate-800 dark:text-white">
+<body class="dark:bg-slate-900 dark:text-white">
 <main x-data class="flex flex-col container mx-auto max-w-xl space-y-4 p-8">
     <button x-data @click="$store.darkMode = ! $store.darkMode" class="btn">
         <strong x-text="$store.darkMode ? 'Dark' : 'Light'"></strong>
@@ -28,26 +28,26 @@
 
     <section>
         <h1 class="text-xl font-bold">Cooper Weiser</h1>
-        <h3 class="text-lg font-semibold text-muted-foreground">Calabasas, CA</h3>
+        <h3 class="text-lg font-semibold text-muted-foreground text-pink-500">Calabasas, CA</h3>
     </section>
     <section>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </section>
     <section>
         <h2 class="text-xl font-bold">Links</h2>
-        <ul class="list-disc space-y-1 pl-8">
-            <li class="underline"><a href="https://linkedin.com/in/cweiser">LinkedIn</a></li>
-            <li class="underline"><a href="https://github.com/cweiser22">Github</a></li>
+        <ul class="list-disc space-y-1 pl-8 text-sm">
+            <li class="underline"><a class="dark:text-cyan-500 text-cyan-600" href="https://linkedin.com/in/cweiser">LinkedIn</a></li>
+            <li class="underline"><a class="dark:text-cyan-500 text-cyan-600" href="https://github.com/cweiser22">Github</a></li>
         </ul>
     </section>
-    <section x-data="{ experience: [
+    <section class="divide-y" x-data="{ experience: [
         { title: 'Bacon Unlimited', dateRange: 'Nov 2022 - Dec 2024' },
         { title: 'Data Crunch Corp', dateRange: 'Dec 2021 - Jun 2022' },
         { title: 'Freelance', dateRange: 'Feb 2020 - Jan 2022' },
     ]}">
-        <h2 class="text-xl font-bold">Experience</h2>
+        <h2 class="text-xl font-bold my-2">Experience</h2>
         <template x-for="e in experience" :key="e.title">
-            <div class="flex w-full justify-between items-center">
+            <div class="flex w-full justify-between items-center p-2 text-sm">
                 <h4 x-text="e.dateRange"></h4>
 
                 <h3 class="font-semibold text-left w-52" x-text="e.title"></h3>
@@ -56,6 +56,7 @@
         </template>
     </section>
     <section x-data="recipes()" class="w-full">
+        <h3 class="text-xl font-bold my-2">Recipes</h3>
         <template x-for="r in recipes" :key="r.title">
             <div x-data="{ open: null }" class="w-full space-y-2">
                 <!-- Accordion Item 1 -->
@@ -120,6 +121,7 @@
             ]
         }
     }
+
     document.addEventListener('alpine:init', () => {
         Alpine.store('darkMode', false)
     })
